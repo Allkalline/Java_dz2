@@ -8,13 +8,13 @@ import java.io.*;
 public class zad1 {
     public static void main(String[] args) throws Exception {
       String list = ReadFile("TxtForZad1.txt"); 
-      System.out.println(list); 
+      //System.out.println(list); 
       StringBuilder resultSelect = ParsAndFilter(list);
       System.out.println(resultSelect);
     }
     public static StringBuilder ParsAndFilter(String line) {
         line = line.replaceAll("[{}\"]", "");
-        System.out.println(line);
+        //System.out.println(line);
         StringBuilder result = new StringBuilder("select * from students where ");
 
         String [] arrayData = line.split(", ");
@@ -22,14 +22,10 @@ public class zad1 {
             String[] arrData = arrayData[i].split(":");
             if(arrData[1].equals("null") == false) {
                 if (i != 0) {
-                    result.append(", ");
-                    result.append(arrData[0]);
-                    result.append(" : ");
-                    result.append(arrData[1]);
+                    result.append(", " + arrData[0] + " : " + arrData[1]);
+                   
                 } else {
-                    result.append(arrData[0]);
-                    result.append(" : ");
-                    result.append(arrData[1]);
+                    result.append(arrData[0] + " : " + arrData[1]);
                 }
             }
             
